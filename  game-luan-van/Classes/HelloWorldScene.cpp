@@ -41,7 +41,27 @@ bool HelloWorld::init()
 
 		this->scheduleUpdate();
      
-		
+		CCSize winSize = CCDirector::sharedDirector()->getWinSize(); //tam thoi lay kich thuoc chuan la  800x600
+		m_wTileSet  = winSize.width / G_TileSets_W;
+		m_hTileSet = winSize.height / G_TileSets_H;
+
+		 srand (time(NULL));
+		m_terrain = new int* [G_TileSets_H]; //rows
+		for (int i =0 ; i< G_TileSets_H ; i++) // init matrix
+		{
+			m_terrain[i] = new int [G_TileSets_W]; //column
+		}
+
+		for (int i =0 ; i< G_TileSets_H ; i++)
+		{
+			for (int j =0 ; j < G_TileSets_W ; j++)
+			{
+				int random = rand() %2; //random tu 0 ->1
+				m_terrain[i][j] = random;
+			}
+		}
+		CCLog("maxtrix 00 : %d", m_terrain[0][0]);
+
 		background = CCSprite::create("background1.png");
 		background->setAnchorPoint(CCPoint(0,0));
 		background->setPosition(CCPoint(0,0));
@@ -56,8 +76,6 @@ bool HelloWorld::init()
 		m_listTower = new vector<MyObject*>;
 		ManagerObject::Instance()->setListTower(m_listTower);
 		m_listTower = ManagerObject::Instance()->getListTower();
-
-
 
 
 	    firstPoint =  CCPoint(379,560);
@@ -75,7 +93,6 @@ bool HelloWorld::init()
 		path->addNode(CCPoint(276,196));
 		path->addNode(CCPoint(510,187));
 
-
 		for (int i = 0; i< 3; i++ )
 		{
 			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 629 + i*50)));
@@ -84,8 +101,6 @@ bool HelloWorld::init()
 		m_listTower->push_back(new Tower(this, CCPoint(273,419)));
 		m_listTower->push_back(new Tower (this, CCPoint(287,300)));
 	
-	    m_boom = new Boom (this, CCPoint(200,200));
-	  
 
 		this->setTouchEnabled(true);
         bRet = true;
@@ -113,7 +128,7 @@ void HelloWorld::update(float dt)
 	  }
 	}
 
-
+	// Update tower
 	for (std::vector<MyObject*>::iterator i = m_listTower->begin();i!= m_listTower->end(); i++)
 	{	
 		(*i)->update(dt);
@@ -125,7 +140,6 @@ void HelloWorld::draw()
 	{
 		(*j)->draw();
 	}
-	 m_boom->draw();
 	  // background->setVisible(false);
 }
 
@@ -135,6 +149,17 @@ void HelloWorld ::ccTouchesEnded(CCSet *touches, CCEvent *pEvent)
     CCPoint location = touch->getLocationInView();
     location = CCDirector::sharedDirector()->convertToGL(location);
 
+	m_idCol_Terrain = location.x / m_wTileSet;
+	m_idRow_Terrain = location.y / m_hTileSet;
+
+	if( m_terrain[m_idRow_Terrain][m_idCol_Terrain] ==0) {
+		CCLog("invalid position");
+	}
+	else {
+		CCLog("valid position");
+	}
+
+    
 	
 }
 

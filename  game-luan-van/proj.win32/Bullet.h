@@ -11,7 +11,7 @@
 #include <math.h>      
 #include "Character.h"
 using namespace cocos2d;
-class Bullet : public cocos2d ::CCNode
+class Bullet : public MyObject
 {
 public:
 
@@ -26,13 +26,16 @@ public:
 	CCLayer* layer;
 	CCSprite* m_bullet;
 	CCPoint m_V;
-	float m_maxV;
+
 	void setTarget(CCPoint);
 	void update(float dt);
-	void Collision(MyObject* );
+	void Collision(MyObject*,float  );
 	void removeBullet ();
-	Bullet(CCLayer*, CCPoint, float);
+	Bullet(CCLayer*, CCPoint, float, float);
 	~Bullet(void);
+
+	virtual CCRect getRect();
+
 };
 
 #endif 

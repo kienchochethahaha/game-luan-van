@@ -36,7 +36,7 @@ public:
 	float max_force;
 
 	//max velocity of character
-	float maxVelocity;
+
 	float mass;
 
 	CCPoint pathFollowing();

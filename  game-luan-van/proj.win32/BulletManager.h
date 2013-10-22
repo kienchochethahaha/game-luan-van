@@ -22,7 +22,7 @@ public:
 	~BulletManager(void);
 
 	void update(float dt);
-	void collision(MyObject* _enemy);
+	void Collision(MyObject* _enemy, float dt);
 	void addBullet (Bullet* bullet);
 
 	Bullet* getBullet(int index)

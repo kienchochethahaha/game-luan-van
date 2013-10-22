@@ -18,7 +18,7 @@ using namespace std;
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
-	
+
 	vector <MyObject*>* m_listEnemy;
 	vector <MyObject*>* m_listTower;
 	Boom* m_boom;
@@ -26,8 +26,15 @@ public:
 	CCSprite* background;
 	CCPoint firstPoint ;
 	Path* path ;
-	Path* path1;
-	Path* path2;
+	Path* pathLeft;
+	Path* pathRight;
+
+	//terrain 
+	int** m_terrain;
+	int m_wTileSet;
+	int m_hTileSet;
+	int m_idRow_Terrain;
+	int m_idCol_Terrain;
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
