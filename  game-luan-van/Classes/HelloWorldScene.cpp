@@ -125,7 +125,7 @@ void HelloWorld::draw()
 	{
 		(*j)->draw();
 	}
-	  
+	 m_boom->draw();
 	  // background->setVisible(false);
 }
 
