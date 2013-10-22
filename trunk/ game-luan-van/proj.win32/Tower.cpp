@@ -41,7 +41,7 @@ void Tower ::draw()
 void Tower ::shoot(MyObject* m_enemy, float dt)
 {
 	CCPoint totarget =  ccpSub(m_enemy->m_pos, this->m_pos);
-	float a = ccpDot(m_enemy->m_velocity,m_enemy->m_velocity) - (3.5 *3.5);
+	float a = ccpDot(m_enemy->m_velocity,m_enemy->m_velocity) - (m_maxVelocity *m_maxVelocity);
 	float b = 2 * ccpDot(m_enemy->m_velocity, totarget);
 	float c = ccpDot(totarget,totarget);
 
@@ -63,7 +63,7 @@ void Tower ::shoot(MyObject* m_enemy, float dt)
 
 	CCPoint aimSpot = ccpAdd(m_enemy->m_pos ,ccpMult(m_enemy->m_velocity,t)); //position of target in future after t seconds
 	CCPoint bulletPath = ccpSub (aimSpot , m_pos );
-	float timeToImpact = ccpLength(bulletPath) / 3/60; //speed must be in units per second
+	float timeToImpact = ccpLength(bulletPath) / m_maxVelocity/60; //speed must be in units per second
 	
 
 	m_bulletManager->addBullet(new Bullet(layer, m_pos,timeToImpact,m_maxVelocity));

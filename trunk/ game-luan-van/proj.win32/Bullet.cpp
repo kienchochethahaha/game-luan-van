@@ -41,11 +41,12 @@ void Bullet::removeBullet()
 }
 void Bullet ::Collision(MyObject*  _enemy, float dt)
 {
-// 	if( m_bullet->boundingBox().intersectsRect(_enemy->coin->boundingBox()))
-// 	{
-// 		m_Col = true;
-// 		CCLOG("trung roi nay ");
-// 	}
+	if (_enemy !=NULL)
+	if( m_bullet->boundingBox().intersectsRect(_enemy->getRect()))
+	{
+		m_Col = true;
+		CCLOG("trung roi nay ");
+	}
 	
 }
 void Bullet ::update(float dt)
