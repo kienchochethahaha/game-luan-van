@@ -1,15 +1,15 @@
 #include "Bullet.h"
 
-Bullet::Bullet(CCLayer* _layer, CCPoint _pos, float t)
+Bullet::Bullet(CCLayer* _layer, CCPoint _pos, float t, float max_V)
 {
 	m_timeLive = 0;
-	m_maxTimeLive = t;
-	m_istarget =false;
+	m_maxTimeLive = t; // thoi gian ton tai cua bullet cho den khi target
+	m_istarget =false; // da co doi tuong hay chua
 	m_Col = false;
 	m_Active = false;
-	m_maxV = 3;
+	m_maxVelocity = max_V; // speed of bullet
 	layer = _layer;
-	m_pos = _pos;
+	m_pos = _pos; // vi tri bat dau cua bullet
 	m_V = CCPoint(0,0);
 	m_target =  _pos;
 	m_bullet = CCSprite::create("bullet.png");
@@ -39,7 +39,7 @@ void Bullet::removeBullet()
 {
 	layer->removeChild(m_bullet);
 }
-void Bullet ::Collision(MyObject*  _enemy)
+void Bullet ::Collision(MyObject*  _enemy, float dt)
 {
 // 	if( m_bullet->boundingBox().intersectsRect(_enemy->coin->boundingBox()))
 // 	{
@@ -60,11 +60,13 @@ void Bullet ::update(float dt)
 		}
 
 		m_V = ccpNormalize( ccpSub(m_target,m_pos) );
-		m_V =  ccpMult(m_V,m_maxV);
+		m_V =  ccpMult(m_V,m_maxVelocity);
 		m_pos = ccpAdd(m_pos,m_V);
 		m_bullet->setPosition(m_pos);
-
-
 	}
-	
+}
+
+cocos2d::CCRect Bullet::getRect()
+{
+	throw std::exception("The method or operation is not implemented.");
 }

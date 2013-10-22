@@ -14,9 +14,9 @@ Character::Character(CCLayer* _layer, Path* _path, CCPoint _pos)
 	m_steeringV = CCPoint (0,0);
 	m_targetPosition = nodes->at(currentNode); //get target
 	
-
-	maxVelocity = 0.85;
-	max_force = maxVelocity*3;
+	
+	m_maxVelocity = 0.85;
+	max_force = m_maxVelocity*3;
 	mass = 0.05;
 	layer = _layer;
 
@@ -43,7 +43,7 @@ void Character::update(float dt)
 	  	m_steeringV =  ccpMult(m_steeringV, mass);
 	 
 	 	m_velocity = ccpAdd(m_velocity,m_steeringV);
-	 	m_velocity = truncate(m_velocity,maxVelocity); //vector velocity of character -> target of tower
+	 	m_velocity = truncate(m_velocity,m_maxVelocity); //vector velocity of character -> target of tower
 
 	    m_pos.x = m_pos.x + m_velocity.x;
 		m_pos.y = m_pos.y + m_velocity.y;
@@ -76,7 +76,7 @@ CCPoint Character::seek(CCPoint target) //return steering vecto
 {
 	m_desiredV = ccpSub(m_targetPosition, coin->getPosition());
 	m_desiredV = ccpNormalize(m_desiredV);
-	m_desiredV = ccpMult(m_desiredV,maxVelocity);
+	m_desiredV = ccpMult(m_desiredV,m_maxVelocity);
 	return ccpSub(m_desiredV, m_velocity);
 }
 CCPoint Character::truncate(CCPoint vector, float max)

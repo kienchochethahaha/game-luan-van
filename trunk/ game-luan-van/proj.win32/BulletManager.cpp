@@ -21,11 +21,11 @@ void BulletManager::update(float dt)
 		m_listBullet[i]->update(dt);
 	}
 }
-void BulletManager ::collision(MyObject* _enemy)
+void BulletManager ::Collision(MyObject* _enemy, float dt)
 {
 	for (int i =0; i < m_listBullet.size(); i++)
 	{
-		m_listBullet[i]->Collision(_enemy);
+		m_listBullet[i]->Collision(_enemy, dt);
 		if( m_listBullet[i]->m_Col ==true)
 		{
 			m_listBullet[i]->removeBullet();

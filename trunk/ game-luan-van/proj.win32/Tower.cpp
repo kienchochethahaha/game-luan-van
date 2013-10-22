@@ -6,7 +6,7 @@ Tower::Tower(CCLayer* _layer, CCPoint _m_pos)
 
 
 	m_choosedEnemy = NULL;
-
+	m_maxVelocity = 3;
 	layer = _layer;
 	m_Stower = CCSprite::create("tower.png");
 	m_pos = _m_pos;
@@ -34,16 +34,12 @@ Tower::~Tower(void)
 }
 void Tower ::draw()
 {
-
 	glLineWidth(1);
 	ccDrawColor4B(255, 255, 255, 255);
-	cocos2d::ccDrawCircle( m_Stower->getPosition(), m_range, CC_DEGREES_TO_RADIANS(90), 50, false);
-	
+	cocos2d::ccDrawCircle( m_Stower->getPosition(), m_range, CC_DEGREES_TO_RADIANS(90), 50, false);	
 }
 void Tower ::shoot(MyObject* m_enemy, float dt)
 {
-
-
 	CCPoint totarget =  ccpSub(m_enemy->m_pos, this->m_pos);
 	float a = ccpDot(m_enemy->m_velocity,m_enemy->m_velocity) - (3.5 *3.5);
 	float b = 2 * ccpDot(m_enemy->m_velocity, totarget);
@@ -70,7 +66,7 @@ void Tower ::shoot(MyObject* m_enemy, float dt)
 	float timeToImpact = ccpLength(bulletPath) / 3/60; //speed must be in units per second
 	
 
-	m_bulletManager->addBullet(new Bullet(layer, m_pos,timeToImpact));
+	m_bulletManager->addBullet(new Bullet(layer, m_pos,timeToImpact,m_maxVelocity));
 	
 	for (int i =0; i < m_bulletManager->getListBullet().size(); i++)
 	{
@@ -86,7 +82,7 @@ void Tower ::update(float dt)
 
 	if(m_bulletManager->getListBullet().size() >0)
 	{
-		m_bulletManager->collision(m_choosedEnemy);
+		m_bulletManager->Collision(m_choosedEnemy,dt);
 	}
 
 	if(m_choosedEnemy!=NULL && m_Collision  == true )
