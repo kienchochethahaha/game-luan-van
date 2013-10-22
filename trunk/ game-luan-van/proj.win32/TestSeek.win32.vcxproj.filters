@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{5b5d03c3-6cc7-4672-b749-40a3a2f958cc}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{268b3247-d5cf-4027-9c3d-a65b5dc5bbde}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{3c75e6db-07d1-4d25-a006-70f968f880b8}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;png;manifest</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\TestSeek.ico">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\CloseSelected.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\CloseNormal.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\HelloWorld.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\coint.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="C:\Users\Tuan\Desktop\background1.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tower.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\tower-hd.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bullet.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\bullet-hd.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\circle1.png">
+      <Filter>resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TestSeek.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerObject.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Boom.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="MyObject.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagerObject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Boom.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyObject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
