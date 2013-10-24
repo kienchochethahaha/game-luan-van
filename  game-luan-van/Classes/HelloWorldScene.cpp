@@ -60,7 +60,6 @@ bool HelloWorld::init()
 				m_terrain[i][j] = random;
 			}
 		}
-		CCLog("maxtrix 00 : %d", m_terrain[0][0]);
 
 		background = CCSprite::create("background1.png");
 		background->setAnchorPoint(CCPoint(0,0));
@@ -77,6 +76,9 @@ bool HelloWorld::init()
 		ManagerObject::Instance()->setListTower(m_listTower);
 		m_listTower = ManagerObject::Instance()->getListTower();
 
+		m_listBartrack =  new vector<MyObject*>;
+		ManagerObject::Instance()->setListBartrack(m_listBartrack);
+		m_listBartrack = ManagerObject::Instance()->getListBartrack();
 
 	    firstPoint =  CCPoint(379,560);
 		path = new Path();
@@ -93,13 +95,16 @@ bool HelloWorld::init()
 		path->addNode(CCPoint(276,196));
 		path->addNode(CCPoint(510,187));
 
+
+		
 		for (int i = 0; i< 3; i++ )
 		{
 			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 629 + i*50)));
 		}
 
-		m_listTower->push_back(new Tower(this, CCPoint(273,419)));
-		m_listTower->push_back(new Tower (this, CCPoint(287,300)));
+		m_listTower->push_back(new Tower(this, CCPoint(362,485)));
+		m_listTower->push_back(new Tower (this, CCPoint(266,461)));
+		m_listTower->push_back(new Bartrack(this, CCPoint(484,276)));
 	
 
 		this->setTouchEnabled(true);
@@ -148,19 +153,11 @@ void HelloWorld ::ccTouchesEnded(CCSet *touches, CCEvent *pEvent)
 	CCTouch* touch = (CCTouch*)( touches->anyObject() );
     CCPoint location = touch->getLocationInView();
     location = CCDirector::sharedDirector()->convertToGL(location);
-
-	m_idCol_Terrain = location.x / m_wTileSet;
-	m_idRow_Terrain = location.y / m_hTileSet;
-
-	if( m_terrain[m_idRow_Terrain][m_idCol_Terrain] ==0) {
-		CCLog("invalid position");
-	}
-	else {
-		CCLog("valid position");
-	}
-
     
-	
+	for (std::vector<MyObject*>::iterator j = m_listTower->begin();j!= m_listTower->end(); j++)
+	{
+		(*j)->isTouch(location);
+	}
 }
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)

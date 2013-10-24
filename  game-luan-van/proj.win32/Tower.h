@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "BulletManager.h"
 #include "MyObject.h"
+#include "Global.h"
 
 using namespace cocos2d;
 class Tower : public MyObject
@@ -22,24 +23,18 @@ public:
 
 	CCSprite* m_circle;
 	BulletManager* m_bulletManager;
-	
-	 
 	CCSprite* m_Stower;
-	
     CCLayer* layer;
-	
 	float m_range;
 	
 	void shoot(MyObject*,float);
-
-	void lostSight();
-
 	virtual void Collision(MyObject*, float );
 	virtual void update (float dt);
-
 	
     virtual void draw();
+	virtual void isTouch(CCPoint);
 
+	Tower();
 	Tower(CCLayer*,CCPoint);
 	~Tower(void);
 

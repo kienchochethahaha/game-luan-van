@@ -19,6 +19,7 @@ class ManagerObject
 private:
 	vector<MyObject*> *m_listEnemy;
 	vector<MyObject*> *m_listTower;
+	vector<MyObject*> *m_listBartrack;
 
 	ManagerObject(void);
 	static ManagerObject* m_Instance;
@@ -43,6 +44,11 @@ public:
 		return m_listTower;
 
 	}
+	vector<MyObject*>* getListBartrack()
+	{
+		return m_listBartrack;
+
+	}
 	void setListEnemy (vector<MyObject*>* _list)
 	{
 		m_listEnemy = _list;
@@ -50,6 +56,10 @@ public:
 	void setListTower ( vector<MyObject*>* _tower)
 	{
 		m_listTower = _tower;
+	}
+	void setListBartrack ( vector<MyObject*>* _bartrack)
+	{
+		m_listBartrack = _bartrack;
 	}
 	~ManagerObject(void);
 };
