@@ -13,6 +13,7 @@
 #include "Bullet.h"
 #include "ManagerObject.h"
 #include "Boom.h"
+#include "Bartrack.h"
 using namespace cocos2d;
 using namespace std;
 class HelloWorld : public cocos2d::CCLayer
@@ -21,6 +22,8 @@ public:
 
 	vector <MyObject*>* m_listEnemy;
 	vector <MyObject*>* m_listTower;
+	vector <MyObject*>* m_listBartrack;
+
 	Boom* m_boom;
 	int count ;
 	CCSprite* background;

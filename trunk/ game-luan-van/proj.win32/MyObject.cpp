@@ -11,3 +11,7 @@ MyObject::MyObject(void)
 MyObject::~MyObject(void)
 {
 }
+void MyObject::isTouch(CCPoint)
+{
+
+}

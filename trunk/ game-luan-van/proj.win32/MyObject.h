@@ -40,10 +40,11 @@ public:
 	//cooldown - shoot tower, respawn time
 	float m_coolDown;
 
+
 	virtual void Collision (MyObject* ,float) = 0 ;
 	virtual void update(float dt) =0;
-
 	virtual CCRect getRect()=0;
+	virtual void isTouch(CCPoint);
 
 
 	MyObject(void);

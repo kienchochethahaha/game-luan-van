@@ -1,15 +1,19 @@
-	#include "Tower.h"
+#include "Tower.h"
 
+Tower ::Tower()
+{
 
+}
 Tower::Tower(CCLayer* _layer, CCPoint _m_pos)
 {
 
-
+	m_ID = ARCHER;
 	m_choosedEnemy = NULL;
 	m_maxVelocity = 3;
 	layer = _layer;
-	m_Stower = CCSprite::create("tower.png");
 	m_pos = _m_pos;
+	m_Stower = CCSprite::create("tower.png");
+	
 	m_Stower->setAnchorPoint(CCPoint(0.5,0.5));
 	m_Stower->setPosition(m_pos);
 	layer->addChild(m_Stower);
@@ -23,6 +27,7 @@ Tower::Tower(CCLayer* _layer, CCPoint _m_pos)
 	m_circle->setPosition(m_pos);
 	layer->addChild(m_circle);
 	m_circle->setOpacity(100);
+	m_circle->setVisible(false);
 	
 
 	
@@ -120,7 +125,16 @@ void Tower ::Collision(MyObject* m_enemy, float dt) //character = monster
 
 cocos2d::CCRect Tower::getRect()
 {
-	throw std::exception("The method or operation is not implemented.");
+	return m_Stower->boundingBox();
 }
-
+void Tower::isTouch(CCPoint _touch)
+{
+	if (this->getRect().containsPoint(_touch)==true)
+	{
+		m_circle->setVisible(true);
+	}
+	else{
+		m_circle->setVisible(false);
+	}
+}
 
