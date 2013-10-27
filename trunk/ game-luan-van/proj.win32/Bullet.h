@@ -14,7 +14,8 @@ using namespace cocos2d;
 class Bullet : public MyObject
 {
 public:
-
+	float m_Time_Count;
+	CCPoint m_Start_Pos;
     float m_maxTimeLive;
 	float m_timeLive;
 	bool m_istarget;

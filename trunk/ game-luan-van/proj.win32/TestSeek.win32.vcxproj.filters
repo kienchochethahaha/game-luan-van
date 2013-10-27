@@ -94,6 +94,12 @@
     <ClInclude Include="MyObject.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="Bartrack.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -127,6 +133,12 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="MyObject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Bartrack.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
