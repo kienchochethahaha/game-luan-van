@@ -140,7 +140,9 @@
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="Bartrack.h" />
     <ClInclude Include="Boom.h" />
+    <ClInclude Include="BoomManager.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Character.h" />
@@ -155,7 +157,9 @@
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="Bartrack.cpp" />
     <ClCompile Include="Boom.cpp" />
+    <ClCompile Include="BoomManager.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Character.cpp" />

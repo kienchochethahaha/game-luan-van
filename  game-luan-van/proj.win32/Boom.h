@@ -1,6 +1,7 @@
 #pragma once
-#ifndef __Boom_H__
-#define __Boom_H__
+#ifndef __BOOM_H__
+#define __BOOM_H__
+
 #include "cocos2d.h"
 
 #include "CCGL.h"
@@ -9,33 +10,34 @@
 #include <stdio.h>     
 #include <math.h>      
 #include "Character.h"
-#include "Bullet.h"
-#include "BulletManager.h"
-#include "Global.h"
 using namespace cocos2d;
-class Boom : public cocos2d ::CCNode
+class Boom : public MyObject
 {
 public:
-	float m_t0 ;
-	float m_t1 ;
-
-
-	CCLayer* layer;
-	CCSprite* m_bullet;
-	float m_maxV;
+	float m_Time_Count;
+	CCPoint m_Start_Pos;
+	float m_maxTimeLive;
+	float m_timeLive;
+	bool m_istarget;
+	bool m_Col ;
+	bool m_Active;
 	CCPoint m_target;
 	CCPoint m_pos;
+	CCPoint staringpoint;
+	CCLayer* layer;
+	CCSprite* m_Boom;
 	CCPoint m_V;
-	CCPoint m_start;
-	float angle;
-	float distance;
-	float x;
-	float y;
 
-	Boom(CCLayer*, CCPoint);
-	Boom(void);
-	~Boom(void);
-	CCPoint canculateFiringSolution();
+	void setTarget(CCPoint);
 	void update(float dt);
+	void Collision(MyObject*,float  );
+	void removeBoom ();
+	Boom(CCLayer*, CCPoint, float, float);
+	~Boom(void);
+
+	virtual CCRect getRect();
+
 };
-#endif
+
+#endif 
+
