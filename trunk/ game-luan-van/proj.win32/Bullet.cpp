@@ -69,20 +69,20 @@ void Bullet ::update(float dt)
 	if(m_Active ==true)
 	{
 		m_timeLive+=dt;
-		if( m_timeLive >m_maxTimeLive)
+		if( m_timeLive >m_maxTimeLive*1.3f)
 		{
 			m_Col = true;
 		}
-		m_Time_Count=m_timeLive*20;
-
 		m_V = ccpNormalize( ccpSub(m_target,m_pos) );
 		m_V =  ccpMult(m_V,m_maxVelocity);
 		/*m_pos = ccpAdd(m_pos,m_V);*/
 		float d=m_target.x-m_Start_Pos.x;
-		float v=50;
+		float v=40;
 		float  g=10;
 		float asinanpha=float((d*g)/(v*v));
 		double anpha=3.14/2- float(asin(asinanpha)/2);
+		float t=2*v*sin(float(asin(asinanpha)/2))/g;
+		m_Time_Count=m_timeLive*15;
 		//anpha=3.14/2.1f;
 		m_pos.x=m_Start_Pos.x+v*(float)cos(anpha)*m_Time_Count;
 		m_pos.y=m_Start_Pos.y+v*sin(anpha)*m_Time_Count-g*m_Time_Count*m_Time_Count/2;

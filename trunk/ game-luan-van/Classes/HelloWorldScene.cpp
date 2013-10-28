@@ -80,10 +80,10 @@ bool HelloWorld::init()
 		ManagerObject::Instance()->setListBartrack(m_listBartrack);
 		m_listBartrack = ManagerObject::Instance()->getListBartrack();
 
-	    firstPoint =  CCPoint(379,560);
+	    firstPoint =  CCPoint(379+50,560);
 		path = new Path();
 		path->addNode(firstPoint);
-		path->addNode(CCPoint(379,406));
+		path->addNode(CCPoint(379+50,406));
 		path->addNode(CCPoint(360,370));
  		path->addNode(CCPoint(310,350));
  		path->addNode(CCPoint(254,330));
