@@ -1,5 +1,9 @@
 #include "Solider.h"
 
+Solider::Solider()
+{
+
+}
 Solider::Solider (CCLayer* _layer, CCPoint _pos, CCPoint _target)
 {
 	m_stand = false;
