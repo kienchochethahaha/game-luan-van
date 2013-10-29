@@ -12,6 +12,7 @@
 #include "Bullet.h"
 #include "Tower.h"
 #include "MyObject.h"
+#include "Canon.h"
 using namespace cocos2d;
 using namespace std;
 class ManagerObject
@@ -19,6 +20,7 @@ class ManagerObject
 private:
 	vector<MyObject*> *m_listEnemy;
 	vector<MyObject*> *m_listTower;
+	vector <MyObject*>* m_listCanon;
 	vector<MyObject*> *m_listBartrack;
 	vector<MyObject*> *m_listSolider;
 
@@ -45,6 +47,11 @@ public:
 		return m_listTower;
 
 	}
+	vector<MyObject*>* getListCanon()
+	{
+		return m_listCanon;
+
+	}
 	vector<MyObject*>* getListBartrack()
 	{
 		return m_listBartrack;
@@ -65,6 +72,10 @@ public:
 	void setListTower ( vector<MyObject*>* _tower)
 	{
 		m_listTower = _tower;
+	}
+	void setListCanon ( vector<MyObject*>* _canon)
+	{
+		m_listCanon = _canon;
 	}
 	void setListBartrack ( vector<MyObject*>* _bartrack)
 	{

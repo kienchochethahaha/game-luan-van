@@ -76,6 +76,10 @@ bool HelloWorld::init()
 		ManagerObject::Instance()->setListTower(m_listTower);
 		m_listTower = ManagerObject::Instance()->getListTower();
 
+		m_listCanon = new vector<MyObject*>;
+		ManagerObject::Instance()->setListCanon(m_listCanon);
+		m_listCanon = ManagerObject::Instance()->getListCanon();
+
 		m_listBartrack = new vector<MyObject*>;
 		ManagerObject::Instance()->setListBartrack(m_listBartrack);
 		m_listBartrack = ManagerObject::Instance()->getListBartrack();
@@ -103,7 +107,7 @@ bool HelloWorld::init()
 		}
 
 		m_listTower->push_back(new Tower(this, CCPoint(350,485)));
-		m_listTower->push_back(new Tower (this, CCPoint(266,461)));
+		m_listCanon->push_back(new Canon (this, CCPoint(266,461)));
 		m_listBartrack->push_back(new Bartrack(this, CCPoint(484,276)));
 	
 		
@@ -123,7 +127,11 @@ void HelloWorld::update(float dt)
 	{	
 		(*i)->update(dt);
 	}
-
+	// Update canon
+	for (std::vector<MyObject*>::iterator i = m_listCanon->begin();i!= m_listCanon->end(); i++)
+	{	
+		(*i)->update(dt);
+	}
 	//update bartrack
 	for (std::vector<MyObject*>::iterator i = m_listBartrack->begin();i!= m_listBartrack->end();i++)
 	{
@@ -159,6 +167,17 @@ void HelloWorld::update(float dt)
 	  }
 	}
 
+	//collision canon enemy - find target to shoot
+	for (std::vector<MyObject*>::iterator j = m_listCanon->begin();j!= m_listCanon->end(); j++)
+	{
+		for (std::vector<MyObject*>::iterator i = m_listEnemy->begin();i!= m_listEnemy->end(); i++)
+		{
+			if( ( (*j)->m_Collision  ==true) ) // 
+				continue;
+			(*j)->Collision( (*i),dt);	
+		}
+	}
+
 	//collision bartracks - enemy
 	for (std::vector<MyObject*>::iterator i = m_listBartrack->begin();i!= m_listBartrack->end();i++)
 	{
@@ -176,6 +195,10 @@ void HelloWorld::draw()
 	{
 		(*j)->draw();
 	}
+	for (std::vector<MyObject*>::iterator j = m_listCanon->begin();j!= m_listCanon->end(); j++)
+	{
+		(*j)->draw();
+	}
 	  // background->setVisible(false);
 }
 
@@ -186,6 +209,10 @@ void HelloWorld ::ccTouchesEnded(CCSet *touches, CCEvent *pEvent)
     location = CCDirector::sharedDirector()->convertToGL(location);
     
 	for (std::vector<MyObject*>::iterator j = m_listTower->begin();j!= m_listTower->end(); j++)
+	{
+		(*j)->isTouch(location);
+	}
+	for (std::vector<MyObject*>::iterator j = m_listCanon->begin();j!= m_listCanon->end(); j++)
 	{
 		(*j)->isTouch(location);
 	}

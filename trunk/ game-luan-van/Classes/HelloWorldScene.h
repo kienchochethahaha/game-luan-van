@@ -15,6 +15,7 @@
 #include "Boom.h"
 #include "Bartrack.h"
 #include "Solider.h"
+#include "Canon.h"
 
 using namespace cocos2d;
 using namespace std;
@@ -24,6 +25,7 @@ public:
 
 	vector <MyObject*>* m_listEnemy;
 	vector <MyObject*>* m_listTower;
+	vector <MyObject*>* m_listCanon;
 	vector <MyObject*>* m_listBartrack;
 	vector <MyObject*>* m_listSolider;
 
