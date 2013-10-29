@@ -122,13 +122,20 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="..\Resources\background1.png" />
+    <None Include="..\Resources\background2.png" />
+    <None Include="..\Resources\Bartrack.png" />
     <None Include="..\Resources\bullet-hd.png" />
     <None Include="..\Resources\bullet.png" />
     <None Include="..\Resources\circle1.png" />
+    <None Include="..\Resources\circle_bartrack.png" />
     <None Include="..\Resources\CloseNormal.png" />
     <None Include="..\Resources\CloseSelected.png" />
     <None Include="..\Resources\coint.png" />
     <None Include="..\Resources\HelloWorld.png" />
+    <None Include="..\Resources\RallyPoint.png" />
+    <None Include="..\Resources\Solider.plist" />
+    <None Include="..\Resources\Solider.png" />
     <None Include="..\Resources\tower-hd.png" />
     <None Include="..\Resources\tower.png" />
     <None Include="C:\Users\Tuan\Desktop\background1.png" />
@@ -152,6 +159,8 @@
     <ClInclude Include="MyObject.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Solider.h" />
+    <ClInclude Include="SoliderManager.h" />
     <ClInclude Include="Tower.h" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +176,8 @@
     <ClCompile Include="ManagerObject.cpp" />
     <ClCompile Include="MyObject.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Solider.cpp" />
+    <ClCompile Include="SoliderManager.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

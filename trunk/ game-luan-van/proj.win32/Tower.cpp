@@ -18,7 +18,7 @@ Tower::Tower(CCLayer* _layer, CCPoint _m_pos)
 	m_Stower->setPosition(m_pos);
 	layer->addChild(m_Stower);
 	m_range = 80;
-	m_coolDown = 0;
+	m_coolDown = 1.5f;
 	m_bulletManager = new BulletManager();
 	
 
