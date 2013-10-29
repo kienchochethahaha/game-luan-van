@@ -14,7 +14,7 @@ using namespace cocos2d;
 class Boom : public MyObject
 {
 public:
-	int x;
+	int y;
 	float m_Time_Count;
 	CCPoint m_Start_Pos;
     float m_maxTimeLive;
