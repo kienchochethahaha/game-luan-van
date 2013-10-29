@@ -69,6 +69,12 @@
     <None Include="..\Resources\Solider.plist">
       <Filter>resource</Filter>
     </None>
+    <None Include="..\Resources\boom.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\canon.png">
+      <Filter>resource</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestSeek.rc">
@@ -127,6 +133,9 @@
     <ClInclude Include="SoliderManager.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="Canon.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -172,6 +181,9 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="SoliderManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Canon.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>

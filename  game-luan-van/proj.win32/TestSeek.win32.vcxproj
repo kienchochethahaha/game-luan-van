@@ -125,8 +125,10 @@
     <None Include="..\Resources\background1.png" />
     <None Include="..\Resources\background2.png" />
     <None Include="..\Resources\Bartrack.png" />
+    <None Include="..\Resources\boom.png" />
     <None Include="..\Resources\bullet-hd.png" />
     <None Include="..\Resources\bullet.png" />
+    <None Include="..\Resources\canon.png" />
     <None Include="..\Resources\circle1.png" />
     <None Include="..\Resources\circle_bartrack.png" />
     <None Include="..\Resources\CloseNormal.png" />
@@ -152,6 +154,7 @@
     <ClInclude Include="BoomManager.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="Canon.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="main.h" />
@@ -171,6 +174,7 @@
     <ClCompile Include="BoomManager.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="Canon.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManagerObject.cpp" />

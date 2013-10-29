@@ -2,9 +2,11 @@
 
 Bullet::Bullet(CCLayer* _layer, CCPoint _pos, float t, float max_V)
 {
+	m_Time_Count=0;
+	m_Start_Pos=_pos;
 	m_Damage = 1.0f;
 	m_timeLive = 0;
-	m_maxTimeLive = t + 0.1; // thoi gian ton tai cua bullet cho den khi target
+	m_maxTimeLive = t ; // thoi gian ton tai cua bullet cho den khi target
 	m_istarget =false; // da co doi tuong hay chua
 	m_Col = false;
 	m_Active = false;
@@ -44,7 +46,7 @@ void Bullet ::Collision(MyObject*  _enemy, float dt)
 {
 	if (_enemy !=NULL ) 
 	{
-	  if( m_bullet->boundingBox().intersectsRect(_enemy->getRect()) ==true )
+	  if( m_bullet->boundingBox().intersectsRect(_enemy->getRect()))
 	  {
 	  	 _enemy->m_Hp = _enemy->m_Hp  - this->m_Damage;
 		  m_Col = true;
@@ -56,23 +58,21 @@ void Bullet ::Collision(MyObject*  _enemy, float dt)
 void Bullet ::update(float dt)
 {
 	if(m_Active ==true)
-	{
-		
+	{		
 		m_timeLive+=dt;
-		CCLog("m_time live :%f", m_timeLive) ;
 		if( m_timeLive >m_maxTimeLive)
 		{
 			m_timeLive = 0;
 			m_Col = true;
 		}
-
 		m_velocity = ccpNormalize( ccpSub(m_targetPos,m_pos) );
 		m_velocity =  ccpMult(m_velocity,m_maxVelocity);
 		m_pos = ccpAdd(m_pos,m_velocity);
 		m_bullet->setPosition(m_pos);
 	}
-
 }
+
+
 
 cocos2d::CCRect Bullet::getRect()
 {
