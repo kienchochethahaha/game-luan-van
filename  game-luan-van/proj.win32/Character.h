@@ -10,7 +10,7 @@
 #include <math.h>      
 #include "Path.h"
 #include "MyObject.h"
-
+#include "Global.h"
 using namespace cocos2d;
 class Character : public MyObject
 {
@@ -18,7 +18,7 @@ public:
 
 	CCLayer* layer;
 	CCSprite* coin;
-
+	CCSprite* m_circleColision;
 	Path* path;
 	std::vector<CCPoint>* nodes;
 
@@ -57,6 +57,8 @@ public:
 	virtual void Collision( MyObject* ,float );
 
 	virtual void update( float dt );
+
+	void release();
 
 };
 

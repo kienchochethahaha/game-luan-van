@@ -76,17 +76,20 @@ bool HelloWorld::init()
 		ManagerObject::Instance()->setListTower(m_listTower);
 		m_listTower = ManagerObject::Instance()->getListTower();
 
-		m_listBartrack =  new vector<MyObject*>;
+		m_listBartrack = new vector<MyObject*>;
 		ManagerObject::Instance()->setListBartrack(m_listBartrack);
 		m_listBartrack = ManagerObject::Instance()->getListBartrack();
 
-	    firstPoint =  CCPoint(379+50,300);
+
+
+
+		firstPoint =  CCPoint(379,560);
 		path = new Path();
 		path->addNode(firstPoint);
-		path->addNode(CCPoint(379+50,600));
+		path->addNode(CCPoint(379,406));
 		path->addNode(CCPoint(360,370));
- 		path->addNode(CCPoint(310,350));
- 		path->addNode(CCPoint(254,330));
+		path->addNode(CCPoint(310,350));
+		path->addNode(CCPoint(254,330));
 
 		path->addNode(CCPoint(210,280));
 		path->addNode(CCPoint(218,223));
@@ -97,31 +100,57 @@ bool HelloWorld::init()
 
 
 		
-		for (int i = 0; i< 3; i++ )
+		for (int i = 0; i< 15; i++ )
 		{
-			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 300 + i*50)));
+			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 629 + i*80)));
 		}
 
 		m_listTower->push_back(new Tower(this, CCPoint(350,485)));
 		m_listTower->push_back(new Tower (this, CCPoint(266,461)));
-		m_listTower->push_back(new Bartrack(this, CCPoint(484,276)));
+		m_listBartrack->push_back(new Bartrack(this, CCPoint(484,276)));
 	
+		
 
 		this->setTouchEnabled(true);
         bRet = true;
-    } while (0);
-
+    
+	} while(0);
     return bRet;
 }
 void HelloWorld::update(float dt)
 { 
+	////////////*************** UPDATE *****************/////////
+
+	// Update tower
+	for (std::vector<MyObject*>::iterator i = m_listTower->begin();i!= m_listTower->end(); i++)
+	{	
+		(*i)->update(dt);
+	}
+
+	//update bartrack
+	for (std::vector<MyObject*>::iterator i = m_listBartrack->begin();i!= m_listBartrack->end();i++)
+	{
+		(*i)->update(dt);
+	}
+
+
 	//update enemy
-	for (std::vector<MyObject*>::iterator i = m_listEnemy->begin();i!= m_listEnemy->end();i++)
+	for (std::vector<MyObject*>::iterator i = m_listEnemy->begin();i!= m_listEnemy->end();)
 	{
 		
 		(*i)->update(dt);
-			
+		if ( (*i)->m_Hp <=0 )
+		{
+				(*i)->release();
+				i = m_listEnemy->erase(i);
+				continue;
+		}
+		i++;
 	}
+	
+
+	////////////*************** COLLISION *****************/////////
+
 	//collision tower enemy - find target to shoot
 	for (std::vector<MyObject*>::iterator j = m_listTower->begin();j!= m_listTower->end(); j++)
 	{
@@ -133,11 +162,16 @@ void HelloWorld::update(float dt)
 	  }
 	}
 
-	// Update tower
-	for (std::vector<MyObject*>::iterator i = m_listTower->begin();i!= m_listTower->end(); i++)
-	{	
-		(*i)->update(dt);
+	//collision bartracks - enemy
+	for (std::vector<MyObject*>::iterator i = m_listBartrack->begin();i!= m_listBartrack->end();i++)
+	{
+		for (std::vector<MyObject*>::iterator j = m_listEnemy->begin();j!= m_listEnemy->end(); j++)
+		{
+			(*i)->Collision( (*j),dt );
+		}
 	}
+
+	
 }
 void HelloWorld::draw()
 {
@@ -155,6 +189,10 @@ void HelloWorld ::ccTouchesEnded(CCSet *touches, CCEvent *pEvent)
     location = CCDirector::sharedDirector()->convertToGL(location);
     
 	for (std::vector<MyObject*>::iterator j = m_listTower->begin();j!= m_listTower->end(); j++)
+	{
+		(*j)->isTouch(location);
+	}
+	for (std::vector<MyObject*>::iterator j = m_listBartrack->begin();j!= m_listBartrack->end(); j++)
 	{
 		(*j)->isTouch(location);
 	}

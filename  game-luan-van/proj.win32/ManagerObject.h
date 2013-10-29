@@ -20,6 +20,7 @@ private:
 	vector<MyObject*> *m_listEnemy;
 	vector<MyObject*> *m_listTower;
 	vector<MyObject*> *m_listBartrack;
+	vector<MyObject*> *m_listSolider;
 
 	ManagerObject(void);
 	static ManagerObject* m_Instance;
@@ -48,6 +49,14 @@ public:
 	{
 		return m_listBartrack;
 
+	}
+	vector<MyObject*>* getListSolider()
+	{
+		return m_listSolider;
+	}
+	void setListSolider (vector<MyObject*>* _listSolider)
+	{
+		m_listSolider = _listSolider;
 	}
 	void setListEnemy (vector<MyObject*>* _list)
 	{

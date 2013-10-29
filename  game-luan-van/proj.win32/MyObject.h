@@ -10,6 +10,8 @@ using namespace std;
 class MyObject  : public cocos2d::CCNode
 {
 public:
+	// define life of object
+	bool m_iLife;
 
 	//id of object
 	int m_ID;
@@ -36,14 +38,22 @@ public:
 
 	//position
 	CCPoint m_pos;
+	CCPoint m_targetPos;
 
 	//cooldown - shoot tower, respawn time
 	float m_coolDown;
 
+	//number solider is attacking this enemy
+	int m_countAttack;
 
+	bool getLife()
+	{
+		return m_iLife ;
+	}
 	virtual void Collision (MyObject* ,float) = 0 ;
 	virtual void update(float dt) =0;
 	virtual CCRect getRect()=0;
+	virtual void release();
 	virtual void isTouch(CCPoint);
 
 
