@@ -50,6 +50,7 @@ public:
 	{
 		return m_iLife ;
 	}
+	virtual bool TestCollisionelip(MyObject* m_enemy, CCSprite* circle);
 	virtual void Collision (MyObject* ,float) = 0 ;
 	virtual void update(float dt) =0;
 	virtual CCRect getRect()=0;
