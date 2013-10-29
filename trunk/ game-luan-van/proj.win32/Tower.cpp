@@ -73,7 +73,7 @@ void Tower ::shoot(MyObject* m_enemy, float dt)
 	
 
 	m_bulletManager->addBullet(new Bullet(layer, m_pos,timeToImpact,m_maxVelocity));
-	
+
 	for (int i =0; i < m_bulletManager->getListBullet().size(); i++)
 	{
 		m_bulletManager->getBullet(i)->setTarget(aimSpot);
@@ -109,6 +109,7 @@ void Tower ::update(float dt)
 	    {
 		   m_choosedEnemy = NULL;
 		   m_Collision = false;
+		   
 		   
 	    }
 	}
