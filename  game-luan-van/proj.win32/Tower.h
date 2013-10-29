@@ -39,7 +39,7 @@ public:
 	~Tower(void);
 
 	virtual CCRect getRect();
-	bool TestCollisionelip(MyObject* m_enemy);
+
 };
 #endif
 
