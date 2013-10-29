@@ -69,7 +69,7 @@ void Bullet ::update(float dt)
 	if(m_Active ==true)
 	{
 		m_timeLive+=dt;
-		if( m_timeLive >m_maxTimeLive*1.3f)
+		if( m_pos.x==m_target.x&&m_target.y==m_pos.y)
 		{
 			m_Col = true;
 		}
