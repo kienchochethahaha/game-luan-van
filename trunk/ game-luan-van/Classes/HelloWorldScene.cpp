@@ -80,10 +80,10 @@ bool HelloWorld::init()
 		ManagerObject::Instance()->setListBartrack(m_listBartrack);
 		m_listBartrack = ManagerObject::Instance()->getListBartrack();
 
-	    firstPoint =  CCPoint(379+50,560);
+	    firstPoint =  CCPoint(379+50,300);
 		path = new Path();
 		path->addNode(firstPoint);
-		path->addNode(CCPoint(379+50,406));
+		path->addNode(CCPoint(379+50,600));
 		path->addNode(CCPoint(360,370));
  		path->addNode(CCPoint(310,350));
  		path->addNode(CCPoint(254,330));
@@ -99,10 +99,10 @@ bool HelloWorld::init()
 		
 		for (int i = 0; i< 3; i++ )
 		{
-			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 629 + i*50)));
+			m_listEnemy->push_back(new Character(this,path, CCPoint(379 , 300 + i*50)));
 		}
 
-		m_listTower->push_back(new Tower(this, CCPoint(362,485)));
+		m_listTower->push_back(new Tower(this, CCPoint(350,485)));
 		m_listTower->push_back(new Tower (this, CCPoint(266,461)));
 		m_listTower->push_back(new Bartrack(this, CCPoint(484,276)));
 	
