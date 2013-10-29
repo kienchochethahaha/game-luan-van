@@ -48,6 +48,7 @@ public:
 	~Solider(void);
 
 	void Init();
+	void AttackWithNoColision(MyObject*);
 	void setTarget (CCPoint);
 	void Move( CCPoint, float, float);
 	virtual void update( float dt );

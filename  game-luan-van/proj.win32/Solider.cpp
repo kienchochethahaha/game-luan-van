@@ -166,6 +166,10 @@ void Solider::Move( CCPoint target, float _t, float dt)
 		m_Solider->setPosition(m_pos);
 	}
 }
+void Solider::AttackWithNoColision(MyObject* _enemy)
+{
+
+}
 void Solider::setTarget(CCPoint _target)
 {
 	m_ID = MOVE;
