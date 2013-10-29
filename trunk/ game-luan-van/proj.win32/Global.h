@@ -11,6 +11,16 @@ enum ID_TOWER
 	CANNON,
 	CAVALRYMAN
 
-
-
+};
+enum SOLIDER
+{
+	STAND, 
+	MOVE, 
+	ATTACK
+};
+enum ENEMY
+{
+	E_MOVE,
+	E_ATTACKED, 
+	E_STAND
 };

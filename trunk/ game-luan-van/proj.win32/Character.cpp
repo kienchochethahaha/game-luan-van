@@ -4,6 +4,13 @@
 Character::Character(CCLayer* _layer, Path* _path, CCPoint _pos)
 {
 
+	//number solider  attacking this enemy
+	m_countAttack = 0;
+	m_Hp = 3.0f;
+
+	CCLOG("HP: %f",m_Hp);
+
+	m_ID = E_MOVE;
 	path = _path;
 	currentNode = 0;
 	nodes = path->getNodes(); //get path
@@ -22,10 +29,15 @@ Character::Character(CCLayer* _layer, Path* _path, CCPoint _pos)
 
 	coin = CCSprite::create("coint.png");
 	coin->setPosition(ccp(m_pos.x,m_pos.y));
-	coin->setScale(0.4);
+	coin->setScale(0.3);
 	coin->setTag(1);
 	
 	layer->addChild(coin);
+	m_circleColision = CCSprite::create("circle1.png");
+	m_circleColision->setPosition(m_pos);
+	m_circleColision->setScale(0.5);
+	m_circleColision->setOpacity(0);
+	layer->addChild(m_circleColision);
 	
 }
 
@@ -36,8 +48,14 @@ Character::~Character(void)
 }
 void Character::update(float dt)
 {
+	m_circleColision->setPosition(m_pos);
 	  ///	m_steeringV = seek(m_targetPosition);
-
+	if( m_ID == E_STAND)
+	{
+		m_velocity = CCPoint(0,0);
+	}
+	if(m_ID == E_MOVE)
+	{
 	    m_steeringV = pathFollowing();
 	  	m_steeringV = truncate(m_steeringV,max_force);
 	  	m_steeringV =  ccpMult(m_steeringV, mass);
@@ -49,6 +67,7 @@ void Character::update(float dt)
 		m_pos.y = m_pos.y + m_velocity.y;
 
 	 	coin->setPosition(m_pos);
+	}
 }
 CCPoint Character::pathFollowing()
 {
@@ -91,7 +110,11 @@ CCRect Character:: getRect ()
 	return coin->boundingBox() ;
 }
 
-void Character::Collision( MyObject* ,float )
+void Character::Collision( MyObject* _enemy,float dt)
 {
-	
+}
+void Character::release()
+{
+	layer->removeChild(m_circleColision);
+	layer->removeChild(coin);
 }

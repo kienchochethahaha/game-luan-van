@@ -14,6 +14,8 @@
 #include "ManagerObject.h"
 #include "Boom.h"
 #include "Bartrack.h"
+#include "Solider.h"
+
 using namespace cocos2d;
 using namespace std;
 class HelloWorld : public cocos2d::CCLayer
@@ -23,6 +25,7 @@ public:
 	vector <MyObject*>* m_listEnemy;
 	vector <MyObject*>* m_listTower;
 	vector <MyObject*>* m_listBartrack;
+	vector <MyObject*>* m_listSolider;
 
 	Boom* m_boom;
 	int count ;

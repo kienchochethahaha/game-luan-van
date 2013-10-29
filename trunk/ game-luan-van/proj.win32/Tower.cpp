@@ -27,6 +27,7 @@ Tower::Tower(CCLayer* _layer, CCPoint _m_pos)
 	m_circle->setPosition(m_pos);
 	layer->addChild(m_circle);
 	m_circle->setOpacity(100);
+	m_circle->setScale(1.5);
 	//m_circle->setVisible(false);
 	
 
@@ -85,46 +86,54 @@ void Tower ::update(float dt)
 {
 	m_bulletManager->update(dt);
 
-	if(m_bulletManager->getListBullet().size() >0)
+	if( m_choosedEnemy!=NULL && m_choosedEnemy->m_Hp <=0 )
 	{
-		m_bulletManager->Collision(m_choosedEnemy,dt);
+		m_choosedEnemy=NULL;
+		m_Collision =false;
 	}
 
 	if(m_choosedEnemy!=NULL && m_Collision  == true )
 	{
 		m_coolDown+=dt;
-		if(m_coolDown >=1.5 )
+		
+		if(m_coolDown >= 1.5 )
 		{
 			m_coolDown = 0;
 			shoot(m_choosedEnemy,dt);
 		}
 	}
-
+	
 	if(m_choosedEnemy!=NULL && m_Collision  == true)
 	{
-		if ( (m_pos.y  -  m_choosedEnemy->m_pos.y ) >  m_circle->getContentSize().height/2  )
+		if( m_circle->boundingBox().intersectsRect( m_choosedEnemy->getRect() ) ==false)
 	    {
 		   m_choosedEnemy = NULL;
 		   m_Collision = false;
 		   
 	    }
 	}
+	if(m_bulletManager->getListBullet().size() >0)
+	{
+		m_bulletManager->Collision(m_choosedEnemy,dt);
+	}
 }
 
 void Tower ::Collision(MyObject* m_enemy, float dt) //character = monster
 {
-	  if( m_circle->boundingBox().intersectsRect( m_enemy->getRect() ) ) //enemy collision tower
-	  {
-		  if(TestCollisionelip(m_enemy)==true)
-		  {
-			  if(m_choosedEnemy == NULL && m_Collision == false)
-			  {
-				  m_choosedEnemy =  m_enemy;
-				  m_Collision = true;
-			  }
-		  }
-		
-	 }
+
+
+	if( m_circle->boundingBox().intersectsRect( m_enemy->getRect() ) ) //enemy collision tower
+	{
+		if(TestCollisionelip(m_enemy)==true)
+		{
+			if(m_choosedEnemy == NULL && m_Collision == false)
+			{
+				m_choosedEnemy =  m_enemy;
+				m_Collision = true;
+			}
+		}
+
+	}
 }
 bool Tower ::TestCollisionelip(MyObject* m_enemy)
 {
@@ -142,20 +151,20 @@ bool Tower ::TestCollisionelip(MyObject* m_enemy)
 
 	a=m_circle->boundingBox().size.width/2;
 	b=m_circle->boundingBox().size.height/2;
-	//////canh doc trong cung
-	//c= m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;
-	//Y=0;//giao diem
-	//Y1_enemy_after=m_enemy->m_pos.y-m_enemy->getRect().size.height/2-this->m_pos.y;//y duoi
-	//Y2_enemy_after=m_enemy->m_pos.y+m_enemy->getRect().size.height/2-this->m_pos.y;//y tren
-	//A=(1-(c*c)/(a*a))*b*b;
+	////canh doc trong cung
+	c= m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;
+	Y=0;//giao diem
+	Y1_enemy_after=m_enemy->m_pos.y-m_enemy->getRect().size.height/2-this->m_pos.y;//y duoi
+	Y2_enemy_after=m_enemy->m_pos.y+m_enemy->getRect().size.height/2-this->m_pos.y;//y tren
+	A=(1-(c*c)/(a*a))*b*b;
 
-	//if(  A >=0 )
-	//{
+	if(  A >=0 )
+	{
 
-	//	Y=sqrt(A);
-	//	if((Y<Y2_enemy_after&&Y>Y1_enemy_after)||(-Y<Y2_enemy_after&&-Y>Y1_enemy_after))
-	//		return true;
-	//}
+		Y=sqrt(A);
+		if((Y<Y2_enemy_after&&Y>Y1_enemy_after)||(-Y<Y2_enemy_after&&-Y>Y1_enemy_after)||(Y1_enemy_after>-Y&&Y2_enemy_after<Y))
+			return true;
+	}
 
 	//canh doc ngoai cung
 	c= m_enemy->m_pos.x+m_enemy->getRect().size.width/2-this->m_pos.x;
@@ -168,42 +177,42 @@ bool Tower ::TestCollisionelip(MyObject* m_enemy)
 	{
 
 		Y=sqrt(A);
-		if((Y<Y2_enemy_after&&Y>Y1_enemy_after)||(-Y<Y2_enemy_after&&-Y>Y1_enemy_after))
+		if((Y<Y2_enemy_after&&Y>Y1_enemy_after)||(-Y<Y2_enemy_after&&-Y>Y1_enemy_after)||(Y1_enemy_after>-Y&&Y2_enemy_after<Y))
 			return true;
 	}
-	//// canh ngang tren
-	//d= m_enemy->m_pos.y+m_enemy->getRect().size.height/2-this->m_pos.y;
-	//X=0;//giao diem
-	//X1_enemy_after=m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;//x trai
-	//X2_enemy_after=m_enemy->m_pos.x+m_enemy->getRect().size.width/2-this->m_pos.x;//x phai
-	//A=(1-(d*d)/(b*b))*a*a;
+	// canh ngang tren
+	d= m_enemy->m_pos.y+m_enemy->getRect().size.height/2-this->m_pos.y;
+	X=0;//giao diem
+	X1_enemy_after=m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;//x trai
+	X2_enemy_after=m_enemy->m_pos.x+m_enemy->getRect().size.width/2-this->m_pos.x;//x phai
+	A=(1-(d*d)/(b*b))*a*a;
 
-	//if(  A >=0 )
-	//{
+	if(  A >=0 )
+	{
 
-	//	X=sqrt(A);
-	//	if((X<X2_enemy_after&&X>X1_enemy_after)||-X<X2_enemy_after&&-X>X1_enemy_after)
-	//		return true;
-	//}
-	//// canh ngang duoi
-	//d= m_enemy->m_pos.y-m_enemy->getRect().size.height/2-this->m_pos.y;
-	//X=0;//giao diem
-	//X1_enemy_after=m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;//x trai
-	//X2_enemy_after=m_enemy->m_pos.x+m_enemy->getRect().size.width/2-this->m_pos.x;//x phai
-	//A=(1-(d*d)/(b*b))*a*a;
+		X=sqrt(A);
+		if((X<X2_enemy_after&&X>X1_enemy_after)||(-X<X2_enemy_after&&-X>X1_enemy_after)||(X1_enemy_after>-X&&X2_enemy_after<X))
+			return true;
+	}
+	// canh ngang duoi
+	d= m_enemy->m_pos.y-m_enemy->getRect().size.height/2-this->m_pos.y;
+	X=0;//giao diem
+	X1_enemy_after=m_enemy->m_pos.x-m_enemy->getRect().size.width/2-this->m_pos.x;//x trai
+	X2_enemy_after=m_enemy->m_pos.x+m_enemy->getRect().size.width/2-this->m_pos.x;//x phai
+	A=(1-(d*d)/(b*b))*a*a;
 
-	//if(  A >=0 )
-	//{
+	if(  A >=0 )
+	{
 
-	//	X=sqrt(A);
-	//	if((X<X2_enemy_after&&X>X1_enemy_after)||-X<X2_enemy_after&&-X>X1_enemy_after)
-	//		return true;
-	//}
+		X=sqrt(A);
+		if((X<X2_enemy_after&&X>X1_enemy_after)||-X<X2_enemy_after&&-X>X1_enemy_after||(X1_enemy_after>-X&&X2_enemy_after<X))
+			return true;
+	}
 	return false;
 }
 cocos2d::CCRect Tower::getRect()
 {
-	return m_Stower->boundingBox();
+	return m_circle->boundingBox();
 }
 void Tower::isTouch(CCPoint _touch)
 {
