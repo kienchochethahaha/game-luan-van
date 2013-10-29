@@ -48,6 +48,27 @@
     <None Include="..\Resources\circle1.png">
       <Filter>resource</Filter>
     </None>
+    <None Include="..\Resources\background1.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\background2.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Bartrack.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\circle_bartrack.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\RallyPoint.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Solider.png">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\Resources\Solider.plist">
+      <Filter>resource</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestSeek.rc">
@@ -100,6 +121,12 @@
     <ClInclude Include="BoomManager.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="Solider.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="SoliderManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -139,6 +166,12 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="BoomManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Solider.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="SoliderManager.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
