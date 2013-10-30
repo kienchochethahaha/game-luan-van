@@ -66,12 +66,12 @@ void Boom ::update(float dt)
 			m_Col = true;
 		}
 		float d=m_targetPos.x-m_Start_Pos.x;
-		float v=40;
+		float v=50;
 		float  g=10;
 		float asinanpha=float((d*g)/(v*v));
-		double anpha=3.14/2- float(asin(asinanpha)/2);
+		double anpha=float(3.14/2)- float(asin(asinanpha)/2);
 		float t=2*v*sin(float(asin(asinanpha)/2))/g;
-		m_Time_Count=m_timeLive*15;
+		m_Time_Count=m_timeLive*20;
 		m_pos.x=m_Start_Pos.x+v*(float)cos(anpha)*m_Time_Count;
 		m_pos.y=m_Start_Pos.y+v*sin(anpha)*m_Time_Count-g*m_Time_Count*m_Time_Count/2;
 		m_Boom->setPosition(m_pos);
